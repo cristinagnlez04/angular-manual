@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { SideMenuComponent } from "./component-layout/side-menu/side-menu.component";
-import { HomeComponent } from "./component-content/home/home.component";
+import { HomeComponent } from "./component-layout/home/home.component";
 import { IntroductionComponent } from "./component-content/introduction/introduction.component";
 import { InstallationComponent } from "./component-content/installation/installation.component";
 import { BasicCommandsComponent } from "./component-content/basic-commands/basic-commands.component";
@@ -17,23 +17,30 @@ import { HTTPObservablesComponent } from "./component-content/http-observables/h
 const app_routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "side", component: SideMenuComponent },
-  { path: "home", component: HomeComponent },
-  { path: "introduction", component: IntroductionComponent },
-  { path: "installation", component: InstallationComponent },
-  { path: "basic-commands", component: BasicCommandsComponent },
-  { path: "component-creation", component: ComponentCreationComponent },
-  { path: "imports", component: ImportsComponent },
   {
-    path: "comunication-components",
-    component: CommunicationComponentsComponent
-  },
-  { path: "show-data", component: ShowDataComponent },
-  { path: "tables", component: TablesComponent },
-  { path: "forms", component: FormsComponent },
-  { path: "tables", component: TablesComponent },
-  { path: "forms", component: FormsComponent },
-  { path: "reactive-programming", component: ReactiveProgrammingComponent },
-  { path: "http-observables", component: HTTPObservablesComponent }
+    path: "home",
+    component: HomeComponent,
+    children: [
+      { path: "introduction", component: IntroductionComponent },
+      {
+        path: "installation",
+        component: InstallationComponent
+      },
+      { path: "basic-commands", component: BasicCommandsComponent },
+      { path: "component-creation", component: ComponentCreationComponent },
+      { path: "imports", component: ImportsComponent },
+      {
+        path: "comunication-components",
+        component: CommunicationComponentsComponent
+      },
+      { path: "show-data", component: ShowDataComponent },
+      { path: "tables", component: TablesComponent },
+      { path: "forms", component: FormsComponent },
+      { path: "tables", component: TablesComponent },
+      { path: "reactive-programming", component: ReactiveProgrammingComponent },
+      { path: "http-observables", component: HTTPObservablesComponent }
+    ]
+  }
 ];
 
 @NgModule({
